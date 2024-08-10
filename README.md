@@ -1,2 +1,2 @@
 # PythonLogger
-Python simple logger lib
+Python simple logger system
