@@ -1,4 +1,3 @@
-from faker import Faker
 from colorama import Fore, Back, Style, init
 from logger import Logger
 
