@@ -1,8 +1,32 @@
 from datetime import datetime
 from colorama import Fore, init
+import zipfile
+import shutil
 import os
 
 init(autoreset=True)
+
+def _stack_file(file_path, target_folder):
+
+    index = file_path.find('.')
+    if index != -1:
+        result = file_path[:index]
+    else:
+        result = file_path 
+
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    zip_file_path = f"{result}_{timestamp}.zip"
+    
+    try:
+        with zipfile.ZipFile(zip_file_path, 'w') as zipf:
+            zipf.write(file_path, os.path.basename(file_path))
+
+        shutil.move(zip_file_path, os.path.join(target_folder, os.path.basename(zip_file_path)))
+        os.remove(file_path)
+
+        return True
+    except:
+        return False
 
 class Logger:
     def __init__(self, stack_mode=True, file_name="log.log",logs_folder="logs"):
@@ -11,6 +35,7 @@ class Logger:
         self.logs_folder_path = logs_folder
         
         if(self.stack_mode):
+            _stack_file(file_name,logs_folder)
             if not os.path.exists(logs_folder):
                 os.makedirs(logs_folder)
     
@@ -53,13 +78,11 @@ class Logger:
             with open(self.file_name, "a") as f:
                 if(warn_type == "" or warn_type == " "):
                     f.write("[{0}] {1}\n".format(datetime.now().strftime("%Y-%m-%d %H:%M"),"[WARNING] "  + text))
-                    print(Fore.RED + "[WARNING] " + text)
+                    print(Fore.YELLOW + "[WARNING] " + text)
                 else:
                     f.write("[{0}] {1}\n".format(datetime.now().strftime("%Y-%m-%d %H:%M"),"[WARNING/" + warn_type + "] "  + text))
-                    print(Fore.RED + "[WARNING/" + warn_type + "] " + text)
+                    print(Fore.YELLOW + "[WARNING/" + warn_type + "] " + text)
         except FileNotFoundError:
             print(Fore.RED + "[ERROR/Logger] Log file or path not found!")
         except:
             print(Fore.RED + "[ERROR/Logger] An logger exception occurre")
-
-
