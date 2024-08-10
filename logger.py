@@ -8,6 +8,9 @@ init(autoreset=True)
 
 def _stack_file(file_path, target_folder):
 
+    if not os.path.isfile(file_path):
+        return False
+
     index = file_path.find('.')
     if index != -1:
         result = file_path[:index]
@@ -35,9 +38,9 @@ class Logger:
         self.logs_folder_path = logs_folder
         
         if(self.stack_mode):
-            _stack_file(file_name,logs_folder)
             if not os.path.exists(logs_folder):
                 os.makedirs(logs_folder)
+            _stack_file(file_name,logs_folder)
     
     def log(self, text = "log.log"):
         try:
