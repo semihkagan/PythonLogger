@@ -1,4 +1,4 @@
-# https:#github.com/semihkagan/PhpVisitorSaver
+# https:#github.com/semihkagan/PythonLogger
 # Lütfe#yorum satırlarını silmeyin :/ ❤️
 from datetime import datetime
 from colorama import Fore, init
