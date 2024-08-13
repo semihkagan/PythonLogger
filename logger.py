@@ -1,3 +1,5 @@
+# https:#github.com/semihkagan/PhpVisitorSaver
+# Lütfe#yorum satırlarını silmeyin :/ ❤️
 from datetime import datetime
 from colorama import Fore, init
 import zipfile
@@ -32,7 +34,7 @@ def _stack_file(file_path, target_folder):
         return False
 
 class Logger:
-    def __init__(self, stack_mode=True, file_name="log.log",logs_folder="logs"):
+    def __init__(self, stack_mode=False, file_name="log.log",logs_folder="logs"):
         self.file_name = file_name
         self.stack_mode = stack_mode
         self.logs_folder_path = logs_folder
@@ -89,3 +91,17 @@ class Logger:
             print(Fore.RED + "[ERROR/Logger] Log file or path not found!")
         except:
             print(Fore.RED + "[ERROR/Logger] An logger exception occurre")
+
+    def clear(self):
+        try:
+            files_deleted = False
+            for filename in os.listdir(self.logs_folder_path):
+                file_path = os.path.join(self.logs_folder_path, filename)
+                if os.path.isfile(file_path):
+                    os.remove(file_path)
+                    files_deleted = True
+            return files_deleted
+        except Exception as e:
+            print(Fore.RED + f"[ERROR/Logger] {e}")
+            return False
+# https://github.com/semihkagan tarafından yazılmıştır.
