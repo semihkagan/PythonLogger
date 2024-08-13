@@ -34,10 +34,11 @@ def _stack_file(file_path, target_folder):
         return False
 
 class Logger:
-    def __init__(self, stack_mode=False, file_name="log.log",logs_folder="logs"):
+    def __init__(self, stack_mode=False, ConsolePrnt= True, file_name="log.log",logs_folder="logs"):
         self.file_name = file_name
         self.stack_mode = stack_mode
         self.logs_folder_path = logs_folder
+        self.console_print = ConsolePrnt
         
         if(self.stack_mode):
             if not os.path.exists(logs_folder):
@@ -48,9 +49,11 @@ class Logger:
         try:
             with open(self.file_name, "a") as f:
                 f.write("[{0}] {1}\n".format(datetime.now().strftime("%Y-%m-%d %H:%M"), text))
-                print(text)
+                if(self.console_print):
+                    print(text)
         except FileNotFoundError:
-            print(Fore.RED + "[ERROR/Logger] Log file or path not found!")
+            if(self.console_print):
+                print(Fore.RED + "[ERROR/Logger] Log file or path not found!")
         except:
             print(Fore.RED + "[ERROR/Logger] An logger exception occurre")
 
@@ -58,9 +61,11 @@ class Logger:
         try:
             with open(self.file_name, "a") as f:
                 f.write("[{0}] {1}\n".format(datetime.now().strftime("%Y-%m-%d %H:%M"),"[INFO] "  + text))
-                print(Fore.BLUE + text)
+                if(self.console_print):
+                    print(Fore.BLUE + text)
         except FileNotFoundError:
-            print(Fore.RED + "[ERROR/Logger] Log file or path not found!")
+            if(self.console_print):
+                print(Fore.RED + "[ERROR/Logger] Log file or path not found!")
         except:
             print(Fore.RED + "[ERROR/Logger] An logger exception occurre")
     
@@ -69,12 +74,15 @@ class Logger:
             with open(self.file_name, "a") as f:
                 if(err_type == "" or err_type == " "):
                     f.write("[{0}] {1}\n".format(datetime.now().strftime("%Y-%m-%d %H:%M"),"[ERROR] "  + text))
-                    print(Fore.RED + "[ERROR] " + text)
+                    if(self.console_print):
+                        print(Fore.RED + "[ERROR] " + text)
                 else:
                     f.write("[{0}] {1}\n".format(datetime.now().strftime("%Y-%m-%d %H:%M"),"[ERROR/" + err_type + "] "  + text))
-                    print(Fore.RED + "[ERROR/" + err_type + "] " + text)
+                    if(self.console_print):
+                        print(Fore.RED + "[ERROR/" + err_type + "] " + text)
         except FileNotFoundError:
-            print(Fore.RED + "[ERROR/Logger] Log file or path not found!")
+            if(self.console_print):
+                print(Fore.RED + "[ERROR/Logger] Log file or path not found!")
         except:
             print(Fore.RED + "[ERROR/Logger] An logger exception occurre")
 
@@ -83,12 +91,15 @@ class Logger:
             with open(self.file_name, "a") as f:
                 if(warn_type == "" or warn_type == " "):
                     f.write("[{0}] {1}\n".format(datetime.now().strftime("%Y-%m-%d %H:%M"),"[WARNING] "  + text))
-                    print(Fore.YELLOW + "[WARNING] " + text)
+                    if(self.console_print):
+                        print(Fore.YELLOW + "[WARNING] " + text)
                 else:
                     f.write("[{0}] {1}\n".format(datetime.now().strftime("%Y-%m-%d %H:%M"),"[WARNING/" + warn_type + "] "  + text))
-                    print(Fore.YELLOW + "[WARNING/" + warn_type + "] " + text)
+                    if(self.console_print):
+                        print(Fore.YELLOW + "[WARNING/" + warn_type + "] " + text)
         except FileNotFoundError:
-            print(Fore.RED + "[ERROR/Logger] Log file or path not found!")
+            if(self.console_print):
+                print(Fore.RED + "[ERROR/Logger] Log file or path not found!")
         except:
             print(Fore.RED + "[ERROR/Logger] An logger exception occurre")
 
@@ -102,6 +113,8 @@ class Logger:
                     files_deleted = True
             return files_deleted
         except Exception as e:
-            print(Fore.RED + f"[ERROR/Logger] {e}")
+            if(self.console_print):
+                print(Fore.RED + f"[ERROR/Logger] {e}")
             return False
+        
 # https://github.com/semihkagan tarafından yazılmıştır.
