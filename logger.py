@@ -52,8 +52,7 @@ class Logger:
                 if(self.console_print):
                     print(text)
         except FileNotFoundError:
-            if(self.console_print):
-                print(Fore.RED + "[ERROR/Logger] Log file or path not found!")
+            print(Fore.RED + "[ERROR/Logger] Log file or path not found!")
         except:
             print(Fore.RED + "[ERROR/Logger] An logger exception occurre")
 
@@ -64,8 +63,7 @@ class Logger:
                 if(self.console_print):
                     print(Fore.BLUE + text)
         except FileNotFoundError:
-            if(self.console_print):
-                print(Fore.RED + "[ERROR/Logger] Log file or path not found!")
+            print(Fore.RED + "[ERROR/Logger] Log file or path not found!")
         except:
             print(Fore.RED + "[ERROR/Logger] An logger exception occurre")
     
@@ -81,8 +79,7 @@ class Logger:
                     if(self.console_print):
                         print(Fore.RED + "[ERROR/" + err_type + "] " + text)
         except FileNotFoundError:
-            if(self.console_print):
-                print(Fore.RED + "[ERROR/Logger] Log file or path not found!")
+            print(Fore.RED + "[ERROR/Logger] Log file or path not found!")
         except:
             print(Fore.RED + "[ERROR/Logger] An logger exception occurre")
 
@@ -98,8 +95,7 @@ class Logger:
                     if(self.console_print):
                         print(Fore.YELLOW + "[WARNING/" + warn_type + "] " + text)
         except FileNotFoundError:
-            if(self.console_print):
-                print(Fore.RED + "[ERROR/Logger] Log file or path not found!")
+            print(Fore.RED + "[ERROR/Logger] Log file or path not found!")
         except:
             print(Fore.RED + "[ERROR/Logger] An logger exception occurre")
 
@@ -113,8 +109,7 @@ class Logger:
                     files_deleted = True
             return files_deleted
         except Exception as e:
-            if(self.console_print):
-                print(Fore.RED + f"[ERROR/Logger] {e}")
+            print(Fore.RED + f"[ERROR/Logger] {e}")
             return False
         
 # https://github.com/semihkagan tarafından yazılmıştır.
