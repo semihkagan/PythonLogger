@@ -34,7 +34,7 @@ You can initialize the `Logger` class with the following parameters:
 ### Example Usage 💡
 
 ```python
-from logger import Logger
+from lib.Logger import Logger
 
 logger = Logger(stack_mode=True, ConsolePrnt=True, file_name="app.log", logs_folder="app_logs")
 
