@@ -48,6 +48,10 @@ if logger.clear():
     print("All logs cleared.")
 ```
 
+### 4. Stack Mode 📦
+
+If `stack_mode` is enabled, the log file is automatically compressed into a `.zip` file and moved to the `logs_folder` each time the logger is initialized.
+
 ## Requirements 🛠️
 
 To run this script, you'll need the following library installed:
