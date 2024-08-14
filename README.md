@@ -34,7 +34,7 @@ You can initialize the `Logger` class with the following parameters:
 ### Example Usage 💡
 
 ```python
-from lib.Logger import Logger
+from logger import Logger
 
 logger = Logger(stack_mode=True, ConsolePrnt=True, file_name="app.log", logs_folder="app_logs")
 
@@ -42,7 +42,19 @@ logger.log("This is a general log message.")
 logger.info("This is an informational message.")
 logger.err("This is an error message.", "IOError")
 logger.warn("This is a warning message.", "DeprecationWarning")
+```
 
 # Clear all logs
 if logger.clear():
     print("All logs cleared.")
+
+## Requirements 🛠️
+
+To run this script, you'll need the following library installed:
+
+- `colorama`: Used for colored text in the terminal.
+
+You can install it with the following command:
+
+```bash
+pip install colorama
