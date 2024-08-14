@@ -62,3 +62,12 @@ You can install it with the following command:
 
 ```bash
 pip install colorama
+```
+
+## License 📜
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+Developed with ❤️ by [Semih Kagan](https://github.com/semihkagan).
