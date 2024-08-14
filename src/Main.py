@@ -9,4 +9,6 @@ if __name__ == "__main__":
     logger.info("Bilgi Iceren Bir Cikti.")
     logger.warn("Uyari Iceren Bir Cikti!")
     logger.err("Hata Iceren Bir Cikti!!!")
-    # logger.clear()
+
+    #if logger.clear():
+    #   print("All logs cleared.")
